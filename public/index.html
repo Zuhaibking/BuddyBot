@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buddy - Your Learning Friend!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- FontAwesome for cute icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+    <div class="background-bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+
+    <div class="app-container">
+        <header class="app-header">
+            <div class="avatar-container">
+                <div class="bot-avatar">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+            </div>
+            <div class="header-info">
+                <h1>Hi, I'm Buddy! 🌟</h1>
+                <p>Ask me anything!</p>
+            </div>
+            <div class="header-decoration">🎈</div>
+        </header>
+
+        <main id="chat-container">
+            <div class="message bot-message welcoming-message">
+                <div class="message-content">
+                    <p>Hello my friend! I'm Buddy. I can help you learn new things or answer your curious questions. What do you want to learn today? 😊</p>
+                </div>
+            </div>
+        </main>
+
+        <div class="input-area">
+            <input type="text" id="user-input" placeholder="Type your question here..." autocomplete="off" />
+            <button id="send-btn" aria-label="Send Message">
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
