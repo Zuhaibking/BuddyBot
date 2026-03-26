@@ -59,7 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
         showTyping();
 
         try {
-            const response = await fetch('/api/chat', {
+            // 🔥 FIXED FETCH (production safe)
+            const response = await fetch(`${window.location.origin}/api/chat`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -69,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             let data;
 
-            // ✅ SAFE JSON PARSE (fixes your error)
+            // Safe JSON parse
             try {
                 data = await response.json();
             } catch (e) {
@@ -81,7 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             removeTyping();
 
-            // ✅ ALWAYS SHOW SOMETHING
             if (data.reply) {
                 appendMessage(data.reply, true);
             } else if (data.error) {

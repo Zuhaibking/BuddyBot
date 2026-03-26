@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'frontend/dist')));
 
 // Chat API Endpoint
 app.post('/api/chat', async (req, res) => {
@@ -67,7 +67,7 @@ app.post('/api/chat', async (req, res) => {
 
 // Serve frontend
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'frontend/dist/index.html'));
 });
 
 // Start server
