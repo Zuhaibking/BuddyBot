@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const userInput = document.getElementById('user-input');
     const sendBtn = document.getElementById('send-btn');
 
+    console.log("Chat height:", chatContainer.clientHeight); // debug
+
     // Append message
     function appendMessage(text, isBot = false) {
         const messageDiv = document.createElement('div');
@@ -24,7 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         messageDiv.appendChild(contentDiv);
         chatContainer.appendChild(messageDiv);
-        scrollToBottom();
+
+        scrollToBottom(); // 🔥 scroll fix
     }
 
     // Typing indicator
@@ -38,7 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="dot"></div>
         `;
         chatContainer.appendChild(indicator);
-        scrollToBottom();
+
+        scrollToBottom(); // 🔥 scroll fix
     }
 
     function removeTyping() {
@@ -46,8 +50,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (indicator) indicator.remove();
     }
 
+    // 🔥 FIXED SCROLL FUNCTION
     function scrollToBottom() {
-        chatContainer.scrollTop = chatContainer.scrollHeight;
+        setTimeout(() => {
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }, 50);
     }
 
     async function handleSend() {
@@ -59,7 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
         showTyping();
 
         try {
-            // 🔥 FIXED FETCH (production safe)
             const response = await fetch(`${window.location.origin}/api/chat`, {
                 method: 'POST',
                 headers: {
@@ -70,7 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             let data;
 
-            // Safe JSON parse
             try {
                 data = await response.json();
             } catch (e) {
@@ -99,6 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Events
     sendBtn.addEventListener('click', handleSend);
+
     userInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') handleSend();
     });
